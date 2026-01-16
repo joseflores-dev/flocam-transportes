@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- SEO PRINCIPAL -->
+  <title>Transporte Camiones Batea y Camas Bajas en Chile | Tu Empresa</title>
+  <meta name="description" content="Empresa de transporte de carga pesada en Chile. Camiones batea y camas bajas para maquinaria, áridos y proyectos industriales. Servicio 24/7.">
+  <meta name="keywords" content="transporte batea, camas bajas, transporte maquinaria pesada, camiones batea chile, transporte industrial">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://tuusuario.github.io/tu-repo/">
+
+  <!-- SEO TÉCNICO -->
+  <meta name="theme-color" content="#1f2933">
+
+  <!-- DATOS ESTRUCTURADOS -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TransportationBusiness",
+    "name": "Tu Empresa de Transporte",
+    "description": "Transporte de carga pesada con camiones batea y camas bajas en Chile",
+    "areaServed": "CL",
+    "serviceType": [
+      "Transporte con Camión Batea",
+      "Transporte con Camas Bajas"
+    ],
+    "url": "https://tuusuario.github.io/tu-repo/"
+  }
+  </script>
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    :root {
+      --primary: #1f2933;
+      --secondary: #f97316;
+      --light: #f9fafb;
+      --dark: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--primary);
+      line-height: 1.6;
+    }
+
+    header {
+      position: relative;
+      color: white;
+      padding: 0;
+      text-align: center;
+      height: 600px;
+      overflow: hidden;
+    }
+
+    .carousel-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      display: none;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+      display: block;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.6) contrast(1.1);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-size: 1.8rem;
+      font-weight: bold;
+      padding: 12px 16px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      z-index: 3;
+      backdrop-filter: blur(10px);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.5);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-btn:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .carousel-btn.prev {
+      left: 25px;
+    }
+
+    .carousel-btn.next {
+      right: 25px;
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 3;
+    }
+
+    .indicator {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: 2px solid rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .indicator:hover {
+      background: rgba(255,255,255,0.7);
+      transform: scale(1.2);
+    }
+
+    .indicator.active {
+      background: white;
+      border-color: white;
+      transform: scale(1.3);
+    }
+
+    .header-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      background: rgba(0,0,0,0.5);
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 900px;
+      width: 90%;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 35px;
+      font-size: 2.3rem;
+      color: var(--dark);
+    }
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    /* Responsive: 2 columnas para pantallas medianas */
+    @media (max-width: 1024px) {
+      .services {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Responsive: 1 columna para pantallas muy pequeñas */
+    @media (max-width: 600px) {
+      .services {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-methods {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .contact-card {
+        padding: 25px 20px;
+      }
+      
+      .header-content {
+        padding: 30px 20px;
+      }
+      
+      .header-content h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+      transition: transform .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h3 {
+      color: var(--secondary);
+    }
+
+    .text-block {
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.05rem;
+    }
+
+    .cta {
+      background-color: var(--secondary);
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+      border-radius: 14px;
+    }
+
+    .cta h2 {
+      color: white;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: white;
+      color: var(--secondary);
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+      color: white;
+      padding: 80px 20px 30px;
+    }
+
+    .footer-contact {
+      max-width: 1150px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .footer-contact h2 {
+      color: white;
+      margin-bottom: 15px;
+      font-size: 2.3rem;
+    }
+
+    .contact-intro {
+      font-size: 1.1rem;
+      margin-bottom: 50px;
+      opacity: 0.9;
+    }
+
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.1);
+      padding: 35px 25px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .contact-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .contact-card h3 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .contact-card p {
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .contact-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background: #e5630f;
+      transform: scale(1.05);
+    }
+
+    .footer-divider {
+      border: none;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+      margin: 40px auto;
+      max-width: 1150px;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
+
+    .footer-copyright span {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <!-- Carrusel de imágenes -->
+    <div class="carousel-container">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide active">
+          <img src="imgs/promo1.png" alt="Transporte con Camión Batea">
+        </div>
+        <div class="carousel-slide">
+          <img src="imgs/promo2.png" alt="Transporte con Camas Bajas">
+        </div>
+        <div class="carousel-slide">
+          <img src="imgs/promo3.png" alt="Maquinaria Pesada">
+        </div>
+      </div>
+      
+      <!-- Controles del carrusel -->
+      <button class="carousel-btn prev" onclick="previousSlide()">‹</button>
+      <button class="carousel-btn next" onclick="nextSlide()">›</button>
+      
+      <!-- Indicadores -->
+      <div class="carousel-indicators">
+        <span class="indicator active" onclick="currentSlide(1)"></span>
+        <span class="indicator" onclick="currentSlide(2)"></span>
+        <span class="indicator" onclick="currentSlide(3)"></span>
+      </div>
+    </div>
+    
+    <!-- Contenido del header -->
+    <div class="header-content">
+      <h1>Transporte de Camiones Batea y Camas Bajas en Chile</h1>
+      <p>
+        Soluciones profesionales de transporte de carga pesada, maquinaria industrial
+        y materiales a granel para proyectos mineros, industriales y de construcción.
+      </p>
+    </div>
+  </header>
+
+  <section>
+    <h2>Servicios de Transporte Industrial</h2>
+
+    <div class="services">
+      <div class="card">
+        <h3>🚚 Transporte con Camión Batea</h3>
+        <p>
+          Servicio especializado en transporte de áridos, materiales de construcción
+          y carga a granel, con flota moderna y operación segura.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🏗️ Transporte con Camas Bajas</h3>
+        <p>
+          Traslado de maquinaria pesada, equipos industriales y cargas sobredimensionadas,
+          cumpliendo normativa y planificación especializada.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>⏱️ Operación 24/7</h3>
+        <p>
+          Disponibilidad continua para faenas mineras e industriales, adaptándonos a
+          ventanas horarias y turnos nocturnos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🛡️ Seguridad y Experiencia</h3>
+        <p>
+          Conductores certificados, mantenimiento preventivo y protocolos de seguridad
+          en cada servicio de transporte.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Transporte de Carga Pesada en Chile</h2>
+    <div class="text-block">
+      <p>
+        Somos una empresa de transporte especializada en camiones batea y camas bajas,
+        ofreciendo soluciones logísticas para proyectos mineros, industriales y de
+        construcción en todo Chile.
+      </p>
+      <p>
+        Realizamos transporte de maquinaria pesada, equipos sobredimensionados,
+        estructuras metálicas y materiales a granel, cumpliendo altos estándares de
+        seguridad, puntualidad y eficiencia operativa.
+      </p>
+      <p>
+        Prestamos servicios en Santiago, Antofagasta, Calama, Copiapó y otras zonas
+        estratégicas del país.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="cta">
+      <h2>Cotiza tu Transporte de Camión Batea o Cama Baja</h2>
+      <p>
+        Contáctanos para evaluar tu proyecto y entregar una solución de transporte
+        segura y eficiente.
+      </p>
+      <a href="#" onclick="contactarEmpresa(); return false;">
+        Cotizar Transporte de Carga Pesada
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <!-- Sección de Contacto integrada -->
+    <div class="footer-contact">
+      <h2>Contáctanos</h2>
+      <p class="contact-intro">Múltiples formas de comunicarte con nosotros</p>
+      
+      <div class="contact-methods">
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>Email</h3>
+          <p>contacto@tuempresa.cl</p>
+          <button onclick="contactarEmail()" class="contact-btn">Enviar Email</button>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">📱</div>
+          <h3>WhatsApp</h3>
+          <p>+56 9 1234 5678</p>
+          <button onclick="contactarWhatsApp()" class="contact-btn">Escribir por WhatsApp</button>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <h3>Teléfono</h3>
+          <p>+56 2 2345 6789</p>
+          <button onclick="llamarTelefono()" class="contact-btn">Llamar Ahora</button>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Ubicación</h3>
+          <p>Santiago, Chile<br>Cobertura Nacional</p>
+          <button onclick="verUbicacion()" class="contact-btn">Ver Ubicación</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Línea divisoria -->
+    <hr class="footer-divider">
+    
+    <!-- Copyright -->
+    <div class="footer-copyright">
+      © 2026 <span>Tu Empresa de Transporte</span> · Camiones Batea & Camas Bajas · Chile
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let currentIndex = 0;
+      const slides = document.querySelectorAll('.carousel-slide');
+      const indicators = document.querySelectorAll('.indicator');
+      const totalSlides = slides.length;
+      let autoPlayInterval;
+
+      function showSlide(index) {
+        // Ocultar todas las diapositivas
+        slides.forEach((slide, i) => {
+          slide.classList.remove('active');
+          slide.style.display = i === index ? 'block' : 'none';
+        });
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        // Mostrar la diapositiva actual
+        if (slides[index]) {
+          slides[index].classList.add('active');
+          slides[index].style.display = 'block';
+        }
+        if (indicators[index]) {
+          indicators[index].classList.add('active');
+        }
+      }
+
+      window.nextSlide = function() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+      };
+
+      window.previousSlide = function() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        showSlide(currentIndex);
+      };
+
+      window.currentSlide = function(index) {
+        currentIndex = index - 1;
+        showSlide(currentIndex);
+      };
+
+      function startAutoPlay() {
+        stopAutoPlay(); // Limpiar cualquier intervalo previo
+        autoPlayInterval = setInterval(window.nextSlide, 4000);
+      }
+      
+      function stopAutoPlay() {
+        if (autoPlayInterval) {
+          clearInterval(autoPlayInterval);
+          autoPlayInterval = null;
+        }
+      }
+
+      // Inicializar carrusel
+      showSlide(0);
+      
+      // Configurar auto-play
+      const carousel = document.querySelector('.carousel-container');
+      if (carousel) {
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+      }
+      
+      // Iniciar auto-play
+      startAutoPlay();
+
+      // Controles de teclado
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+          window.previousSlide();
+        } else if (e.key === 'ArrowRight') {
+          window.nextSlide();
+        }
+      });
+    });
+
+    // Funciones de contacto
+    function contactarEmpresa() {
+      contactarEmail();
+    }
+
+    function contactarEmail() {
+      const email = 'contacto@tuempresa.cl';
+      const asunto = 'Cotización Transporte Carga Pesada';
+      const cuerpo = 'Hola, me interesa obtener una cotización para transporte de carga pesada. Por favor contáctenme.';
+      
+      Swal.fire({
+        title: '📧 Abrir Cliente de Email',
+        html: `¿Deseas abrir tu cliente de email para enviar la consulta?<br><br><small>Si no tienes configurado un cliente de email, te mostraremos alternativas.</small>`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: '🚀 Abrir Email',
+        cancelButtonText: 'Ver Alternativas',
+        confirmButtonColor: '#f97316',
+        cancelButtonColor: '#6b7280'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+          
+          try {
+            window.location.href = mailtoLink;
+            
+            // Verificar si el mailto funcionó
+            setTimeout(() => {
+              Swal.fire({
+                title: '¿Se abrió correctamente?',
+                text: '¿Se abrió tu cliente de email correctamente?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, perfecto 🚀',
+                cancelButtonText: 'No, mostrar alternativas',
+                confirmButtonColor: '#10b981',
+                cancelButtonColor: '#f97316'
+              }).then((result) => {
+                if (!result.isConfirmed) {
+                  mostrarAlternativaEmail(email);
+                }
+              });
+            }, 2000);
+          } catch (error) {
+            mostrarAlternativaEmail(email);
+          }
+        } else {
+          mostrarAlternativaEmail(email);
+        }
+      });
+    }
+
+    function mostrarAlternativaEmail(email) {
+      Swal.fire({
+        title: '📧 Información de Contacto',
+        html: `
+          <div style="text-align: left; padding: 20px;">
+            <p><strong>📧 Email:</strong> ${email}</p>
+            <p><strong>📝 Mensaje sugerido:</strong></p>
+            <div style="background: #f3f4f6; padding: 15px; border-radius: 8px; margin: 10px 0;">
+              <em>Hola, me interesa obtener una cotización para transporte de carga pesada. Por favor contáctenme.</em>
+            </div>
+            <p><small>También puedes usar los otros medios de contacto disponibles.</small></p>
+          </div>
+        `,
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: '📋 Copiar Email',
+        cancelButtonText: 'Cerrar',
+        confirmButtonColor: '#f97316',
+        cancelButtonColor: '#6b7280'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Copiar email al portapapeles
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(email).then(() => {
+              Swal.fire({
+                title: '¡Copiado! 📋',
+                text: `Email copiado al portapapeles: ${email}`,
+                icon: 'success',
+                timer: 3000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+              });
+            }).catch(() => {
+              Swal.fire({
+                title: 'Error al copiar',
+                text: 'No se pudo copiar automáticamente. Puedes copiar manualmente: ' + email,
+                icon: 'warning',
+                confirmButtonColor: '#f97316'
+              });
+            });
+          }
+        }
+      });
+    }
+
+    function contactarWhatsApp() {
+      const numero = '56912345678';
+      const mensaje = '¡Hola! Me interesa obtener información sobre sus servicios de transporte de carga pesada.';
+      const whatsappUrl = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      
+      Swal.fire({
+        title: '📱 WhatsApp',
+        html: `¿Deseas abrir WhatsApp para enviar un mensaje?<br><br><small>Se abrirá WhatsApp Web con un mensaje predefinido.</small>`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: '🚀 Abrir WhatsApp',
+        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#25d366',
+        cancelButtonColor: '#6b7280'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.open(whatsappUrl, '_blank');
+          Swal.fire({
+            title: '¡Perfecto! 🚀',
+            text: 'WhatsApp se está abriendo en una nueva ventana.',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end'
+          });
+        }
+      });
+    }
+
+    function llamarTelefono() {
+      const telefono = '+56223456789';
+      
+      Swal.fire({
+        title: '📞 Llamar por Teléfono',
+        html: `¿Deseas llamar al <strong>${telefono}</strong>?<br><br><small>Esta función depende de tu dispositivo.</small>`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: '📞 Llamar Ahora',
+        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#3b82f6',
+        cancelButtonColor: '#6b7280'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `tel:${telefono}`;
+          Swal.fire({
+            title: 'Iniciando llamada... 📞',
+            text: 'Se está iniciando la llamada en tu dispositivo.',
+            icon: 'info',
+            timer: 2000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end'
+          });
+        }
+      });
+    }
+
+    function verUbicacion() {
+      const ubicacion = 'Santiago, Chile';
+      const googleMapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(ubicacion)}`;
+      
+      Swal.fire({
+        title: '📍 Ver Ubicación',
+        html: `¿Deseas ver nuestra ubicación en Google Maps?<br><br><strong>Ubicación:</strong> ${ubicacion}<br><small>Cobertura en todo Chile</small>`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: '🗺️ Abrir Maps',
+        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#ef4444',
+        cancelButtonColor: '#6b7280'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.open(googleMapsUrl, '_blank');
+          Swal.fire({
+            title: 'Abriendo Google Maps... 🗺️',
+            text: 'Google Maps se está abriendo en una nueva ventana.',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'top-end'
+          });
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
