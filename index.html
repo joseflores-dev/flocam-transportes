@@ -32,12 +32,17 @@
 
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <!-- Google Fonts - Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --primary: #1f2933;
       --secondary: #f97316;
-      --light: #f9fafb;
+      --light: #1e3a8a;
       --dark: #111827;
     }
 
@@ -45,21 +50,55 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Montserrat', sans-serif;
     }
 
     body {
-      background-color: var(--light);
-      color: var(--primary);
+      background-color: #0f172a;
+      color: white;
       line-height: 1.6;
     }
 
-    header {
+    /* Navbar con logo */
+    .navbar {
+      background: var(--primary);
+      padding: 15px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    .navbar-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      height: 65px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .company-name {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-left: 15px;
+    }
+
+    .hero-carousel {
       position: relative;
       color: white;
       padding: 0;
       text-align: center;
-      height: 600px;
+      height: 450px;
       overflow: hidden;
     }
 
@@ -71,36 +110,39 @@
       height: 100%;
       z-index: 1;
       overflow: hidden;
+      background-color: #000;
     }
 
     .carousel-track {
       width: 100%;
       height: 100%;
-      position: relative;
+      display: flex;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
 
     .carousel-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+      min-width: 100%;
       height: 100%;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-      display: none;
-    }
-
-    .carousel-slide.active {
-      opacity: 1;
-      display: block;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
     }
 
     .carousel-slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
-      filter: brightness(0.6) contrast(1.1);
+      filter: brightness(0.9) contrast(1.1) saturate(1.1);
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: high-quality;
+      backface-visibility: hidden;
+      transition: transform 0.8s ease;
+    }
+    
+    .carousel-slide:not(:first-child) img {
+      transform: scale(1.1);
     }
 
     .carousel-btn {
@@ -175,27 +217,99 @@
     }
 
     .header-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      background: rgba(0,0,0,0.5);
-      padding: 40px;
-      border-radius: 10px;
-      max-width: 900px;
-      width: 90%;
+      display: none;
     }
 
-    header h1 {
+    .hero-carousel h1 {
       font-size: 3rem;
       margin-bottom: 15px;
     }
 
-    header p {
+    .hero-carousel p {
       font-size: 1.2rem;
       max-width: 850px;
       margin: auto;
+    }
+
+    /* Media queries para carrusel responsive */
+    @media (max-width: 768px) {
+      .hero-carousel {
+        height: 350px;
+      }
+      
+      .navbar {
+        padding: 10px 15px;
+      }
+      
+      .logo {
+        height: 55px;
+      }
+      
+      .company-name {
+        font-size: 1.2rem;
+        margin-left: 10px;
+      }
+      
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+      }
+      
+      .carousel-btn.prev {
+        left: 15px;
+      }
+      
+      .carousel-btn.next {
+        right: 15px;
+      }
+      
+      .header-content {
+        padding: 25px;
+        max-width: 95%;
+      }
+      
+      .hero-carousel h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-carousel p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-carousel {
+        height: 280px;
+      }
+      
+      .logo {
+        height: 45px;
+      }
+      
+      .company-name {
+        font-size: 1rem;
+        margin-left: 8px;
+      }
+      
+      .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+      }
+      
+      .indicator {
+        width: 10px;
+        height: 10px;
+      }
+      
+      .header-content {
+        padding: 20px;
+      }
+      
+      .hero-carousel h1 {
+        font-size: 1.6rem;
+      }
     }
 
     section {
@@ -208,7 +322,7 @@
       text-align: center;
       margin-bottom: 35px;
       font-size: 2.3rem;
-      color: var(--dark);
+      color: white;
     }
 
     h3 {
@@ -253,15 +367,19 @@
     }
 
     .card {
-      background: white;
+      background: #1e293b;
       padding: 30px;
       border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.08);
-      transition: transform .3s;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      transition: transform .3s, background .3s;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .card:hover {
       transform: translateY(-6px);
+      background: #334155;
+      border-color: rgba(255,255,255,0.2);
     }
 
     .card h3 {
@@ -275,11 +393,25 @@
     }
 
     .cta {
-      background-color: var(--secondary);
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
       color: white;
       text-align: center;
       padding: 55px 20px;
       border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(249,115,22,0.1) 50%, transparent 70%);
+      pointer-events: none;
     }
 
     .cta h2 {
@@ -288,17 +420,26 @@
 
     .cta a {
       display: inline-block;
-      background: white;
-      color: var(--secondary);
+      background: var(--secondary);
+      color: white;
       padding: 14px 32px;
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
       margin-top: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta a:hover {
+      background: #e5630f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(249,115,22,0.4);
     }
 
     footer {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+      background: #1e293b;
       color: white;
       padding: 80px 20px 30px;
     }
@@ -393,16 +534,134 @@
     .footer-copyright span {
       color: white;
     }
+
+    /* Botones flotantes de contacto */
+    .floating-contact {
+      position: fixed;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .floating-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    .floating-btn.whatsapp {
+      background: #25d366;
+      color: white;
+    }
+
+    .floating-btn.phone {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .floating-btn.email {
+      background: #ef4444;
+      color: white;
+    }
+
+    .floating-btn.location {
+      background: #8b5cf6;
+      color: white;
+    }
+
+    /* Tooltip */
+    .floating-btn::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: 65px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .floating-btn:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .floating-contact {
+        right: 15px;
+        gap: 12px;
+      }
+      
+      .floating-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+      }
+      
+      .floating-btn::before {
+        display: none; /* Ocultar tooltips en móvil */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .floating-contact {
+        right: 10px;
+      }
+      
+      .floating-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <header>
+  <!-- Navbar con logo -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div style="display: flex; align-items: center;">
+        <img src="imgs/logo.png" alt="Logo Empresa" class="logo">
+        <span class="company-name">Flocam Transportes</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Carousel -->
+  <section class="hero-carousel">
     <!-- Carrusel de imágenes -->
     <div class="carousel-container">
       <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-slide active">
+        <div class="carousel-slide">
           <img src="imgs/promo1.png" alt="Transporte con Camión Batea">
         </div>
         <div class="carousel-slide">
@@ -433,7 +692,7 @@
         y materiales a granel para proyectos mineros, industriales y de construcción.
       </p>
     </div>
-  </header>
+  </section>
 
   <section>
     <h2>Servicios de Transporte Industrial</h2>
@@ -523,21 +782,21 @@
         <div class="contact-card">
           <div class="contact-icon">📱</div>
           <h3>WhatsApp</h3>
-          <p>+56 9 1234 5678</p>
+          <p>+56 9 8221 8804</p>
           <button onclick="contactarWhatsApp()" class="contact-btn">Escribir por WhatsApp</button>
         </div>
         
         <div class="contact-card">
           <div class="contact-icon">📞</div>
           <h3>Teléfono</h3>
-          <p>+56 2 2345 6789</p>
+          <p>+56 9 8221 8804</p>
           <button onclick="llamarTelefono()" class="contact-btn">Llamar Ahora</button>
         </div>
         
         <div class="contact-card">
           <div class="contact-icon">📍</div>
           <h3>Ubicación</h3>
-          <p>Santiago, Chile<br>Cobertura Nacional</p>
+          <p>Con Con, Chile<br>Cobertura Nacional</p>
           <button onclick="verUbicacion()" class="contact-btn">Ver Ubicación</button>
         </div>
       </div>
@@ -552,50 +811,62 @@
     </div>
   </footer>
 
+  <!-- Botones flotantes de contacto -->
+  <div class="floating-contact">
+    <button class="floating-btn whatsapp" onclick="contactarWhatsApp()" data-tooltip="WhatsApp: +56 9 8221 8804">📱</button>
+    <button class="floating-btn phone" onclick="llamarTelefono()" data-tooltip="Llamar: +56 9 8221 8804">📞</button>
+    <button class="floating-btn email" onclick="contactarEmail()" data-tooltip="Email: contacto@tuempresa.cl">📧</button>
+    <button class="floating-btn location" onclick="verUbicacion()" data-tooltip="Ubicación: Con Con, Chile">📍</button>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       let currentIndex = 0;
+      const track = document.getElementById('carouselTrack');
       const slides = document.querySelectorAll('.carousel-slide');
       const indicators = document.querySelectorAll('.indicator');
       const totalSlides = slides.length;
       let autoPlayInterval;
 
-      function showSlide(index) {
-        // Ocultar todas las diapositivas
-        slides.forEach((slide, i) => {
-          slide.classList.remove('active');
-          slide.style.display = i === index ? 'block' : 'none';
-        });
-        indicators.forEach(indicator => indicator.classList.remove('active'));
+      function updateSlider() {
+        // Mover el track
+        const translateX = -currentIndex * 100;
+        track.style.transform = `translateX(${translateX}%)`;
         
-        // Mostrar la diapositiva actual
-        if (slides[index]) {
-          slides[index].classList.add('active');
-          slides[index].style.display = 'block';
-        }
-        if (indicators[index]) {
-          indicators[index].classList.add('active');
-        }
+        // Actualizar indicadores
+        indicators.forEach((indicator, index) => {
+          indicator.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Efecto parallax en imágenes
+        slides.forEach((slide, index) => {
+          const img = slide.querySelector('img');
+          if (index === currentIndex) {
+            img.style.transform = 'scale(1)';
+          } else {
+            img.style.transform = 'scale(1.1)';
+          }
+        });
       }
 
       window.nextSlide = function() {
         currentIndex = (currentIndex + 1) % totalSlides;
-        showSlide(currentIndex);
+        updateSlider();
       };
 
       window.previousSlide = function() {
         currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        showSlide(currentIndex);
+        updateSlider();
       };
 
       window.currentSlide = function(index) {
         currentIndex = index - 1;
-        showSlide(currentIndex);
+        updateSlider();
       };
 
       function startAutoPlay() {
-        stopAutoPlay(); // Limpiar cualquier intervalo previo
-        autoPlayInterval = setInterval(window.nextSlide, 4000);
+        stopAutoPlay();
+        autoPlayInterval = setInterval(window.nextSlide, 5000);
       }
       
       function stopAutoPlay() {
@@ -605,17 +876,16 @@
         }
       }
 
-      // Inicializar carrusel
-      showSlide(0);
+      // Inicializar slider
+      updateSlider();
       
-      // Configurar auto-play
+      // Auto-play
       const carousel = document.querySelector('.carousel-container');
       if (carousel) {
         carousel.addEventListener('mouseenter', stopAutoPlay);
         carousel.addEventListener('mouseleave', startAutoPlay);
       }
       
-      // Iniciar auto-play
       startAutoPlay();
 
       // Controles de teclado
@@ -624,6 +894,27 @@
           window.previousSlide();
         } else if (e.key === 'ArrowRight') {
           window.nextSlide();
+        }
+      });
+      
+      // Soporte táctil básico
+      let startX = 0;
+      let endX = 0;
+      
+      carousel.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+      });
+      
+      carousel.addEventListener('touchend', function(e) {
+        endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > 50) { // Mínimo deslizamiento
+          if (diff > 0) {
+            window.nextSlide(); // Deslizar izquierda = siguiente
+          } else {
+            window.previousSlide(); // Deslizar derecha = anterior
+          }
         }
       });
     });
@@ -727,7 +1018,7 @@
     }
 
     function contactarWhatsApp() {
-      const numero = '56912345678';
+      const numero = '56982218804';
       const mensaje = '¡Hola! Me interesa obtener información sobre sus servicios de transporte de carga pesada.';
       const whatsappUrl = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
       
@@ -757,7 +1048,7 @@
     }
 
     function llamarTelefono() {
-      const telefono = '+56223456789';
+      const telefono = '+56982218804';
       
       Swal.fire({
         title: '📞 Llamar por Teléfono',
