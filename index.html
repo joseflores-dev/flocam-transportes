@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
 
   <!-- SEO PRINCIPAL -->
-  <title>Transporte Camiones Batea y Camas Bajas en Chile | Tu Empresa</title>
+  <title>Transporte Camiones Batea y Camas Bajas en Chile | Flocam Transportes</title>
   <meta name="description" content="Empresa de transporte de carga pesada en Chile. Camiones batea y camas bajas para maquinaria, áridos y proyectos industriales. Servicio 24/7.">
   <meta name="keywords" content="transporte batea, camas bajas, transporte maquinaria pesada, camiones batea chile, transporte industrial">
   <meta name="robots" content="index, follow">
@@ -19,7 +19,7 @@
   {
     "@context": "https://schema.org",
     "@type": "TransportationBusiness",
-    "name": "Tu Empresa de Transporte",
+    "name": "Flocam Transportes",
     "description": "Transporte de carga pesada con camiones batea y camas bajas en Chile",
     "areaServed": "CL",
     "serviceType": [
@@ -40,10 +40,17 @@
 
   <style>
     :root {
-      --primary: #1f2933;
+      --primary: #0a1929;
       --secondary: #f97316;
+      --accent: #3b82f6;
+      --accent-purple: #8b5cf6;
       --light: #1e3a8a;
-      --dark: #111827;
+      --dark: #001f3f;
+      --navy-blue: #001f3f;
+      --navy-blue-light: #0a1929;
+      --navy-blue-dark: #000d1a;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
     }
 
     * {
@@ -53,19 +60,76 @@
       font-family: 'Montserrat', sans-serif;
     }
 
-    body {
-      background-color: #0f172a;
-      color: white;
-      line-height: 1.6;
+    html {
+      scroll-behavior: smooth;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
     }
 
-    /* Navbar con logo */
-    .navbar {
-      background: var(--primary);
-      padding: 15px 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    body {
+      background: linear-gradient(135deg, #001f3f 0%, #0a1929 25%, #1a2332 50%, #0a1929 75%, #001f3f 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: white;
+      line-height: 1.6;
+      min-height: 100vh;
       position: relative;
-      z-index: 10;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Efectos de partículas de fondo */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(30, 58, 138, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* Navbar con glassmorphism */
+    .navbar {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      padding: 15px 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      animation: slideDownNav 0.6s ease-out;
+      transform: translateY(-100%);
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes slideDownNav {
+      from {
+        transform: translateY(-100%);
+      }
+      to {
+        transform: translateY(0);
+      }
     }
 
     .navbar-container {
@@ -74,16 +138,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .logo {
       height: 65px;
       width: auto;
       transition: transform 0.3s ease;
+      filter: drop-shadow(0 4px 8px rgba(249, 115, 22, 0.3));
     }
 
     .logo:hover {
-      transform: scale(1.05);
+      transform: scale(1.05) rotate(2deg);
     }
 
     .company-name {
@@ -91,15 +158,27 @@
       font-size: 1.5rem;
       font-weight: 600;
       margin-left: 15px;
+      text-shadow: 0 2px 10px rgba(249, 115, 22, 0.5);
+      background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero-carousel {
       position: relative;
       color: white;
       padding: 0;
+      margin: 0;
       text-align: center;
-      height: 450px;
+      height: 500px;
+      min-height: 500px;
       overflow: hidden;
+      z-index: 100;
+      width: 100vw;
+      max-width: 100%;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
     }
 
     .carousel-container {
@@ -111,11 +190,30 @@
       z-index: 1;
       overflow: hidden;
       background-color: #000;
+      min-height: 100%;
+    }
+
+    .carousel-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 31, 63, 0.1) 0%,
+        rgba(0, 31, 63, 0.3) 50%,
+        rgba(0, 31, 63, 0.7) 100%
+      );
+      z-index: 2;
+      pointer-events: none;
     }
 
     .carousel-track {
       width: 100%;
       height: 100%;
+      min-height: 100%;
       display: flex;
       transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       will-change: transform;
@@ -123,54 +221,67 @@
 
     .carousel-slide {
       min-width: 100%;
+      width: 100%;
       height: 100%;
+      min-height: 100%;
       flex-shrink: 0;
       overflow: hidden;
       position: relative;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .carousel-slide img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      object-position: center;
-      filter: brightness(0.9) contrast(1.1) saturate(1.1);
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      filter: brightness(0.95) contrast(1.1) saturate(1.15);
       image-rendering: -webkit-optimize-contrast;
       image-rendering: high-quality;
       backface-visibility: hidden;
-      transition: transform 0.8s ease;
+      transition: filter 0.8s ease;
+      min-height: 100%;
     }
-    
-    .carousel-slide:not(:first-child) img {
-      transform: scale(1.1);
+
+    .carousel-slide.active img {
+      filter: brightness(1) contrast(1.15) saturate(1.2);
     }
 
     .carousel-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
       color: white;
-      border: 2px solid rgba(255,255,255,0.3);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       font-size: 1.8rem;
       font-weight: bold;
       padding: 12px 16px;
       cursor: pointer;
       border-radius: 50%;
-      transition: all 0.3s ease;
-      z-index: 3;
-      backdrop-filter: blur(10px);
-      width: 50px;
-      height: 50px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 101;
+      width: 60px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                  0 0 20px rgba(249, 115, 22, 0.2);
     }
 
     .carousel-btn:hover {
-      background: rgba(255,255,255,0.25);
-      border-color: rgba(255,255,255,0.5);
-      transform: translateY(-50%) scale(1.1);
+      background: rgba(249, 115, 22, 0.3);
+      border-color: rgba(249, 115, 22, 0.6);
+      transform: translateY(-50%) scale(1.15);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 
+                  0 0 30px rgba(249, 115, 22, 0.4);
     }
 
     .carousel-btn:active {
@@ -192,53 +303,123 @@
       transform: translateX(-50%);
       display: flex;
       gap: 12px;
-      z-index: 3;
+      z-index: 101;
     }
 
     .indicator {
       width: 14px;
       height: 14px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.4);
-      border: 2px solid rgba(255,255,255,0.6);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.4);
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .indicator:hover {
-      background: rgba(255,255,255,0.7);
-      transform: scale(1.2);
+      background: rgba(249, 115, 22, 0.5);
+      border-color: rgba(249, 115, 22, 0.8);
+      transform: scale(1.3);
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
     }
 
     .indicator.active {
-      background: white;
-      border-color: white;
-      transform: scale(1.3);
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+      border-color: rgba(249, 115, 22, 1);
+      transform: scale(1.4);
+      box-shadow: 0 0 25px rgba(249, 115, 22, 0.8);
     }
 
     .header-content {
-      display: none;
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 101;
+      text-align: center;
+      width: 85%;
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px) saturate(120%);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+      padding: 30px 35px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      animation: fadeInUp 1s ease-out;
+      box-sizing: border-box;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
     }
 
     .hero-carousel h1 {
-      font-size: 3rem;
+      font-size: 2.2rem;
       margin-bottom: 15px;
+      color: white;
+      text-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(249, 115, 22, 0.4);
+      line-height: 1.2;
+      font-weight: 700;
     }
 
     .hero-carousel p {
-      font-size: 1.2rem;
+      font-size: 1rem;
       max-width: 850px;
       margin: auto;
+      opacity: 0.9;
+      line-height: 1.5;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
     }
 
     /* Media queries para carrusel responsive */
+    @media (max-width: 1024px) {
+      .hero-carousel {
+        height: 450px;
+        min-height: 450px;
+      }
+      
+      .header-content {
+        width: 90%;
+        padding: 25px 30px;
+        bottom: 100px;
+      }
+      
+      .carousel-btn.prev {
+        left: 20px;
+      }
+      
+      .carousel-btn.next {
+        right: 20px;
+      }
+    }
+
     @media (max-width: 768px) {
       .hero-carousel {
-        height: 350px;
+        height: 400px;
+        min-height: 400px;
       }
       
       .navbar {
-        padding: 10px 15px;
+        padding: 12px 15px;
+      }
+      
+      .navbar-container {
+        justify-content: center;
       }
       
       .logo {
@@ -251,36 +432,82 @@
       }
       
       .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.4rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        padding: 10px 14px;
       }
       
       .carousel-btn.prev {
-        left: 15px;
+        left: 10px;
       }
       
       .carousel-btn.next {
-        right: 15px;
+        right: 10px;
+      }
+      
+      .carousel-indicators {
+        bottom: 20px;
+        gap: 10px;
+      }
+      
+      .indicator {
+        width: 12px;
+        height: 12px;
       }
       
       .header-content {
-        padding: 25px;
-        max-width: 95%;
+        padding: 20px 25px;
+        width: 92%;
+        max-width: 92%;
+        bottom: 70px;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(8px) saturate(120%);
+        -webkit-backdrop-filter: blur(8px) saturate(120%);
       }
       
       .hero-carousel h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+        line-height: 1.3;
       }
       
       .hero-carousel p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+
+      h2 {
+        font-size: 2.2rem;
+        margin-bottom: 40px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      .text-block {
+        padding: 30px 25px;
         font-size: 1rem;
+      }
+
+      .cta {
+        padding: 50px 25px;
+      }
+
+      .cta h2 {
+        font-size: 2rem;
       }
     }
 
     @media (max-width: 480px) {
       .hero-carousel {
-        height: 280px;
+        height: 350px;
+        min-height: 350px;
+      }
+      
+      .navbar {
+        padding: 10px 12px;
       }
       
       .logo {
@@ -293,9 +520,23 @@
       }
       
       .carousel-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        padding: 8px 12px;
+      }
+      
+      .carousel-btn.prev {
+        left: 8px;
+      }
+      
+      .carousel-btn.next {
+        right: 8px;
+      }
+      
+      .carousel-indicators {
+        bottom: 15px;
+        gap: 8px;
       }
       
       .indicator {
@@ -304,25 +545,191 @@
       }
       
       .header-content {
-        padding: 20px;
+        padding: 18px 20px;
+        width: 95%;
+        max-width: 95%;
+        bottom: 60px;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(6px) saturate(120%);
+        -webkit-backdrop-filter: blur(6px) saturate(120%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
       }
       
       .hero-carousel h1 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        line-height: 1.2;
+      }
+
+      .hero-carousel p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+      }
+
+      section {
+        padding: 50px 15px;
+      }
+
+      .card {
+        padding: 25px 20px;
+      }
+
+      .card h3 {
+        font-size: 1.2rem;
+      }
+
+      .text-block {
+        padding: 25px 20px;
+        font-size: 0.95rem;
+      }
+
+      .cta {
+        padding: 40px 20px;
+      }
+
+      .cta h2 {
         font-size: 1.6rem;
+      }
+
+      .cta a {
+        padding: 14px 30px;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .hero-carousel {
+        height: 320px;
+        min-height: 320px;
+      }
+      
+      .header-content {
+        padding: 15px 18px;
+        bottom: 55px;
+      }
+      
+      .hero-carousel h1 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      .hero-carousel p {
+        font-size: 0.8rem;
+      }
+      
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        padding: 6px 10px;
+      }
+      
+      .carousel-btn.prev {
+        left: 5px;
+      }
+      
+      .carousel-btn.next {
+        right: 5px;
+      }
+    }
+
+    /* Orientación landscape en móviles */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero-carousel {
+        height: 100vh;
+        min-height: 100vh;
+        max-height: 100vh;
+      }
+      
+      .header-content {
+        bottom: 20px;
+        padding: 15px 20px;
+      }
+      
+      .carousel-indicators {
+        bottom: 10px;
       }
     }
 
     section {
-      padding: 60px 20px;
-      max-width: 1150px;
+      padding: 80px 20px;
+      max-width: 1250px;
       margin: auto;
+      position: relative;
+      z-index: 1;
     }
+
+    section:not(.hero-carousel) {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    section:not(.hero-carousel).animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section:not(.hero-carousel):nth-of-type(2) { transition-delay: 0.1s; }
+    section:not(.hero-carousel):nth-of-type(3) { transition-delay: 0.2s; }
+    section:not(.hero-carousel):nth-of-type(4) { transition-delay: 0.3s; }
+    section:not(.hero-carousel):nth-of-type(5) { transition-delay: 0.4s; }
 
     h2 {
       text-align: center;
-      margin-bottom: 35px;
-      font-size: 2.3rem;
-      color: white;
+      margin-bottom: 50px;
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #fff 0%, #f97316 50%, #fb923c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 2px 20px rgba(249, 115, 22, 0.3);
+      position: relative;
+      padding-bottom: 20px;
+      opacity: 0;
+      transform: translateY(-30px);
+      animation: slideDownFade 0.8s ease-out forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes slideDownFade {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #f97316, transparent);
+      border-radius: 2px;
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+      animation: expandLine 0.6s ease-out forwards;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes expandLine {
+      from {
+        transform: translateX(-50%) scaleX(0);
+      }
+      to {
+        transform: translateX(-50%) scaleX(1);
+      }
     }
 
     h3 {
@@ -332,8 +739,25 @@
     .services {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
+      gap: 30px;
     }
+
+    .card {
+      opacity: 0;
+      transform: translateY(50px) scale(0.9) rotateX(10deg);
+      perspective: 1000px;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    section.animate-in .card {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotateX(0deg);
+    }
+
+    section.animate-in .card:nth-child(1) { transition-delay: 0.1s; }
+    section.animate-in .card:nth-child(2) { transition-delay: 0.2s; }
+    section.animate-in .card:nth-child(3) { transition-delay: 0.3s; }
+    section.animate-in .card:nth-child(4) { transition-delay: 0.4s; }
 
     /* Responsive: 2 columnas para pantallas medianas */
     @media (max-width: 1024px) {
@@ -367,81 +791,271 @@
     }
 
     .card {
-      background: #1e293b;
-      padding: 30px;
-      border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.25);
-      transition: transform .3s, background .3s;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       color: white;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(249, 115, 22, 0.1),
+        transparent
+      );
+      transition: left 0.5s ease;
+    }
+
+    .card:hover::before {
+      left: 100%;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      background: #334155;
-      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-15px) scale(1.03) rotateY(2deg);
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(249, 115, 22, 0.5);
+      box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.5),
+        0 0 50px rgba(249, 115, 22, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      animation: cardPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes cardPulse {
+      0%, 100% {
+        box-shadow: 
+          0 25px 70px rgba(0, 0, 0, 0.5),
+          0 0 50px rgba(249, 115, 22, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      }
+      50% {
+        box-shadow: 
+          0 25px 70px rgba(0, 0, 0, 0.5),
+          0 0 60px rgba(249, 115, 22, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
     }
 
     .card h3 {
-      color: var(--secondary);
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 10px rgba(249, 115, 22, 0.3);
     }
 
     .text-block {
       max-width: 900px;
       margin: auto;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px) saturate(180%);
+      -webkit-backdrop-filter: blur(15px) saturate(180%);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      line-height: 1.8;
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .text-block.animate-in {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .text-block p {
+      margin-bottom: 20px;
+      opacity: 0.95;
+      animation: fadeInText 0.6s ease-out forwards;
+      animation-delay: calc(var(--delay, 0) * 0.2s);
+      opacity: 0;
+    }
+
+    .text-block.animate-in p {
+      animation: fadeInText 0.6s ease-out forwards;
+    }
+
+    .text-block.animate-in p:nth-child(1) { --delay: 1; }
+    .text-block.animate-in p:nth-child(2) { --delay: 2; }
+    .text-block.animate-in p:nth-child(3) { --delay: 3; }
+
+    @keyframes fadeInText {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 0.95;
+        transform: translateY(0);
+      }
+    }
+
+    .text-block p:last-child {
+      margin-bottom: 0;
     }
 
     .cta {
-      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(30px) saturate(180%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
       color: white;
       text-align: center;
-      padding: 55px 20px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.1);
+      padding: 70px 40px;
+      border-radius: 30px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
       position: relative;
       overflow: hidden;
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      opacity: 0;
+      transform: scale(0.9) translateY(30px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .cta.animate-in {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      animation: ctaBounce 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    @keyframes ctaBounce {
+      0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(30px);
+      }
+      60% {
+        transform: scale(1.05) translateY(-5px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
 
     .cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(249, 115, 22, 0.1) 50%,
+        transparent 70%
+      );
+      animation: shimmer 3s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .cta::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(45deg, transparent 30%, rgba(249,115,22,0.1) 50%, transparent 70%);
+      background: radial-gradient(
+        circle at 50% 50%,
+        rgba(249, 115, 22, 0.1) 0%,
+        transparent 70%
+      );
       pointer-events: none;
     }
 
     .cta h2 {
       color: white;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 20px rgba(249, 115, 22, 0.3);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      position: relative;
+      z-index: 1;
+      font-size: 1.2rem;
+      opacity: 0.95;
     }
 
     .cta a {
       display: inline-block;
-      background: var(--secondary);
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
       color: white;
-      padding: 14px 32px;
-      border-radius: 30px;
+      padding: 18px 45px;
+      border-radius: 50px;
       text-decoration: none;
-      font-weight: bold;
-      margin-top: 20px;
-      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 30px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       z-index: 1;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 10px 30px rgba(249, 115, 22, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .cta a:hover {
-      background: #e5630f;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(249,115,22,0.4);
+      background: linear-gradient(135deg, #fb923c 0%, #fdba74 100%);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 
+        0 20px 50px rgba(249, 115, 22, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
     }
 
     footer {
-      background: #1e293b;
+      background: rgba(0, 31, 63, 0.5);
+      backdrop-filter: blur(30px) saturate(180%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
       color: white;
       padding: 80px 20px 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    footer.animate-in {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .footer-contact {
@@ -451,15 +1065,19 @@
     }
 
     .footer-contact h2 {
-      color: white;
+      background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 15px;
-      font-size: 2.3rem;
+      font-size: 2.5rem;
+      text-shadow: 0 2px 20px rgba(249, 115, 22, 0.3);
     }
 
     .contact-intro {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 50px;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     .contact-methods {
@@ -470,69 +1088,166 @@
     }
 
     .contact-card {
-      background: rgba(255,255,255,0.1);
-      padding: 35px 25px;
-      border-radius: 15px;
-      border: 1px solid rgba(255,255,255,0.2);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      padding: 40px 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       text-align: center;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(40px) rotateY(15deg);
+    }
+
+    footer.animate-in .contact-card {
+      opacity: 1;
+      transform: translateY(0) rotateY(0deg);
+    }
+
+    footer.animate-in .contact-card:nth-child(1) { transition-delay: 0.1s; }
+    footer.animate-in .contact-card:nth-child(2) { transition-delay: 0.2s; }
+    footer.animate-in .contact-card:nth-child(3) { transition-delay: 0.3s; }
+    footer.animate-in .contact-card:nth-child(4) { transition-delay: 0.4s; }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle,
+        rgba(249, 115, 22, 0.1) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .contact-card:hover::before {
+      opacity: 1;
     }
 
     .contact-card:hover {
-      transform: translateY(-8px);
-      background: rgba(255,255,255,0.15);
-      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-12px) scale(1.03);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(249, 115, 22, 0.4);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(249, 115, 22, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
 
     .contact-icon {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 4px 10px rgba(249, 115, 22, 0.4));
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+
+    .contact-card:nth-child(1) .contact-icon { animation-delay: 0s; }
+    .contact-card:nth-child(2) .contact-icon { animation-delay: 0.2s; }
+    .contact-card:nth-child(3) .contact-icon { animation-delay: 0.4s; }
+    .contact-card:nth-child(4) .contact-icon { animation-delay: 0.6s; }
+
+    @keyframes iconBounce {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(5deg);
+      }
+    }
+
+    .contact-card:hover .contact-icon {
+      transform: scale(1.3) rotate(15deg) !important;
+      animation: none;
     }
 
     .contact-card h3 {
-      color: var(--secondary);
-      margin-bottom: 10px;
-      font-size: 1.3rem;
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+      position: relative;
+      z-index: 1;
     }
 
     .contact-card p {
-      margin-bottom: 20px;
-      opacity: 0.9;
+      margin-bottom: 25px;
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+      font-size: 1.05rem;
     }
 
     .contact-btn {
-      background: var(--secondary);
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
       color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 25px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 14px 28px;
+      border-radius: 30px;
       cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      z-index: 1;
+      box-shadow: 
+        0 8px 25px rgba(249, 115, 22, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.9rem;
     }
 
     .contact-btn:hover {
-      background: #e5630f;
-      transform: scale(1.05);
+      background: linear-gradient(135deg, #fb923c 0%, #fdba74 100%);
+      transform: translateY(-3px) scale(1.08);
+      box-shadow: 
+        0 15px 40px rgba(249, 115, 22, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
     }
 
     .footer-divider {
       border: none;
-      height: 1px;
-      background: rgba(255,255,255,0.3);
-      margin: 40px auto;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(249, 115, 22, 0.5),
+        transparent
+      );
+      margin: 50px auto;
       max-width: 1150px;
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
     }
 
     .footer-copyright {
       text-align: center;
-      color: #9ca3af;
-      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
     }
 
     .footer-copyright span {
-      color: white;
+      background: linear-gradient(135deg, #fff 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
     }
 
     /* Botones flotantes de contacto */
@@ -541,104 +1256,290 @@
       right: 25px;
       top: 50%;
       transform: translateY(-50%);
-      z-index: 1000;
+      z-index: 50;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 18px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      pointer-events: none;
+    }
+
+    .floating-contact.show {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      animation: fadeInRightShow 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+
+    @keyframes fadeInRightShow {
+      from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
     }
 
     .floating-btn {
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
       border-radius: 50%;
-      border: none;
+      border: 2px solid rgba(255, 255, 255, 0.3);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      backdrop-filter: blur(10px);
+      font-size: 1.8rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
       position: relative;
+      overflow: hidden;
+      animation: floatButton 3s ease-in-out infinite;
+    }
+
+    .floating-btn-wrapper:nth-child(1) .floating-btn { animation-delay: 0s; }
+    .floating-btn-wrapper:nth-child(2) .floating-btn { animation-delay: 0.2s; }
+    .floating-btn-wrapper:nth-child(3) .floating-btn { animation-delay: 0.4s; }
+    .floating-btn-wrapper:nth-child(4) .floating-btn { animation-delay: 0.6s; }
+
+    @keyframes floatButton {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .floating-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+    }
+
+    .floating-btn:hover::after {
+      width: 100%;
+      height: 100%;
     }
 
     .floating-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transform: translateY(-15px) scale(1.2) rotate(10deg) !important;
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 40px currentColor,
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.6);
+      animation: none;
+    }
+
+    .floating-btn span {
+      position: relative;
+      z-index: 1;
     }
 
     .floating-btn.whatsapp {
-      background: #25d366;
-      color: white;
+      background: rgba(37, 211, 102, 0.2);
+      color: #25d366;
+    }
+
+    .floating-btn.whatsapp:hover {
+      background: rgba(37, 211, 102, 0.4);
+      box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(37, 211, 102, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
 
     .floating-btn.phone {
-      background: #3b82f6;
-      color: white;
+      background: rgba(59, 130, 246, 0.2);
+      color: #3b82f6;
+    }
+
+    .floating-btn.phone:hover {
+      background: rgba(59, 130, 246, 0.4);
+      box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(59, 130, 246, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
 
     .floating-btn.email {
-      background: #ef4444;
-      color: white;
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+
+    .floating-btn.email:hover {
+      background: rgba(239, 68, 68, 0.4);
+      box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(239, 68, 68, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     }
 
     .floating-btn.location {
-      background: #8b5cf6;
-      color: white;
+      background: rgba(139, 92, 246, 0.2);
+      color: #8b5cf6;
     }
 
-    /* Tooltip */
-    .floating-btn::before {
+    .floating-btn.location:hover {
+      background: rgba(139, 92, 246, 0.4);
+      box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(139, 92, 246, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    /* Wrapper para los botones flotantes */
+    .floating-btn-wrapper {
+      position: relative;
+    }
+
+    /* Tooltip mejorado */
+    .floating-btn-wrapper::before {
       content: attr(data-tooltip);
       position: absolute;
-      right: 65px;
+      right: 80px;
       top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.8);
+      transform: translateY(-50%) translateX(-10px);
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
       color: white;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.8rem;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
       white-space: nowrap;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       font-family: 'Montserrat', sans-serif;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(249, 115, 22, 0.2);
+      z-index: 1001;
+      pointer-events: none;
     }
 
-    .floating-btn:hover::before {
+    /* Flecha del tooltip */
+    .floating-btn-wrapper::after {
+      content: '';
+      position: absolute;
+      right: 72px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 8px solid rgba(0, 0, 0, 0.95);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 1002;
+      pointer-events: none;
+    }
+
+    .floating-btn-wrapper:hover::before {
       opacity: 1;
       visibility: visible;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    .floating-btn-wrapper:hover::after {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(-50%);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
       .floating-contact {
         right: 15px;
-        gap: 12px;
+        gap: 15px;
       }
       
       .floating-btn {
-        width: 55px;
-        height: 55px;
-        font-size: 1.4rem;
+        width: 58px;
+        height: 58px;
+        font-size: 1.5rem;
       }
       
-      .floating-btn::before {
+      .floating-btn-wrapper::before,
+      .floating-btn-wrapper::after {
         display: none; /* Ocultar tooltips en móvil */
+      }
+
+      .contact-card {
+        padding: 30px 25px;
+      }
+
+      .contact-icon {
+        font-size: 2.5rem;
+      }
+
+      .footer-contact h2 {
+        font-size: 2rem;
       }
     }
 
     @media (max-width: 480px) {
       .floating-contact {
         right: 10px;
+        gap: 12px;
       }
       
       .floating-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
+        width: 52px;
+        height: 52px;
+        font-size: 1.4rem;
+      }
+
+      .contact-card {
+        padding: 25px 20px;
+      }
+
+      .contact-icon {
+        font-size: 2rem;
+      }
+
+      .contact-card h3 {
+        font-size: 1.2rem;
+      }
+
+      .footer-contact h2 {
+        font-size: 1.8rem;
+      }
+
+      .contact-intro {
+        font-size: 1rem;
       }
     }
   </style>
@@ -650,7 +1551,7 @@
   <nav class="navbar">
     <div class="navbar-container">
       <div style="display: flex; align-items: center;">
-        <img src="imgs/logo.png" alt="Logo Empresa" class="logo">
+        <img src="imgs/logoPNG.png" alt="Logo Empresa" class="logo">
         <span class="company-name">Flocam Transportes</span>
       </div>
     </div>
@@ -662,13 +1563,16 @@
     <div class="carousel-container">
       <div class="carousel-track" id="carouselTrack">
         <div class="carousel-slide">
-          <img src="imgs/promo1.png" alt="Transporte con Camión Batea">
+          <img src="imgs/4.png" alt="Transporte con Camión Batea">
         </div>
         <div class="carousel-slide">
-          <img src="imgs/promo2.png" alt="Transporte con Camas Bajas">
+          <img src="imgs/3.png" alt="Transporte con Camas Bajas">
         </div>
         <div class="carousel-slide">
-          <img src="imgs/promo3.png" alt="Maquinaria Pesada">
+          <img src="imgs/2.png" alt="Maquinaria Pesada">
+        </div>
+        <div class="carousel-slide">
+          <img src="imgs/5.png" alt="Maquinaria Pesada">
         </div>
       </div>
       
@@ -681,6 +1585,7 @@
         <span class="indicator active" onclick="currentSlide(1)"></span>
         <span class="indicator" onclick="currentSlide(2)"></span>
         <span class="indicator" onclick="currentSlide(3)"></span>
+        <span class="indicator" onclick="currentSlide(4)"></span>
       </div>
     </div>
     
@@ -694,7 +1599,27 @@
     </div>
   </section>
 
-  <section>
+  <section class="about-section">
+    <h2>Transporte de Carga Pesada en Chile</h2>
+    <div class="text-block">
+      <p>
+        Somos una empresa de transporte especializada en camiones batea y camas bajas,
+        ofreciendo soluciones logísticas para proyectos mineros, industriales y de
+        construcción en todo Chile.
+      </p>
+      <p>
+        Realizamos transporte de maquinaria pesada, equipos sobredimensionados,
+        estructuras metálicas y materiales a granel, cumpliendo altos estándares de
+        seguridad, puntualidad y eficiencia operativa.
+      </p>
+      <p>
+        Prestamos servicios en Santiago, Antofagasta, Calama, Copiapó y otras zonas
+        estratégicas del país.
+      </p>
+    </div>
+  </section>
+
+  <section class="services-section">
     <h2>Servicios de Transporte Industrial</h2>
 
     <div class="services">
@@ -732,27 +1657,7 @@
     </div>
   </section>
 
-  <section>
-    <h2>Transporte de Carga Pesada en Chile</h2>
-    <div class="text-block">
-      <p>
-        Somos una empresa de transporte especializada en camiones batea y camas bajas,
-        ofreciendo soluciones logísticas para proyectos mineros, industriales y de
-        construcción en todo Chile.
-      </p>
-      <p>
-        Realizamos transporte de maquinaria pesada, equipos sobredimensionados,
-        estructuras metálicas y materiales a granel, cumpliendo altos estándares de
-        seguridad, puntualidad y eficiencia operativa.
-      </p>
-      <p>
-        Prestamos servicios en Santiago, Antofagasta, Calama, Copiapó y otras zonas
-        estratégicas del país.
-      </p>
-    </div>
-  </section>
-
-  <section>
+  <section class="cta-section">
     <div class="cta">
       <h2>Cotiza tu Transporte de Camión Batea o Cama Baja</h2>
       <p>
@@ -796,7 +1701,7 @@
         <div class="contact-card">
           <div class="contact-icon">📍</div>
           <h3>Ubicación</h3>
-          <p>Con Con, Chile<br>Cobertura Nacional</p>
+          <p>ConCon, Chile<br>Cobertura Nacional</p>
           <button onclick="verUbicacion()" class="contact-btn">Ver Ubicación</button>
         </div>
       </div>
@@ -807,16 +1712,24 @@
     
     <!-- Copyright -->
     <div class="footer-copyright">
-      © 2026 <span>Tu Empresa de Transporte</span> · Camiones Batea & Camas Bajas · Chile
+      © 2026 <span>Flocam Transportes</span> · Camiones Batea & Camas Bajas · Chile
     </div>
   </footer>
 
   <!-- Botones flotantes de contacto -->
   <div class="floating-contact">
-    <button class="floating-btn whatsapp" onclick="contactarWhatsApp()" data-tooltip="WhatsApp: +56 9 8221 8804">📱</button>
-    <button class="floating-btn phone" onclick="llamarTelefono()" data-tooltip="Llamar: +56 9 8221 8804">📞</button>
-    <button class="floating-btn email" onclick="contactarEmail()" data-tooltip="Email: contacto@tuempresa.cl">📧</button>
-    <button class="floating-btn location" onclick="verUbicacion()" data-tooltip="Ubicación: Con Con, Chile">📍</button>
+    <div class="floating-btn-wrapper" data-tooltip="WhatsApp: +56 9 8221 8804">
+      <button class="floating-btn whatsapp" onclick="contactarWhatsApp()"><span>📱</span></button>
+    </div>
+    <div class="floating-btn-wrapper" data-tooltip="Llamar: +56 9 8221 8804">
+      <button class="floating-btn phone" onclick="llamarTelefono()"><span>📞</span></button>
+    </div>
+    <div class="floating-btn-wrapper" data-tooltip="Email: contacto@tuempresa.cl">
+      <button class="floating-btn email" onclick="contactarEmail()"><span>📧</span></button>
+    </div>
+    <div class="floating-btn-wrapper" data-tooltip="Ubicación: ConCon, Chile">
+      <button class="floating-btn location" onclick="verUbicacion()"><span>📍</span></button>
+    </div>
   </div>
 
   <script>
@@ -838,13 +1751,12 @@
           indicator.classList.toggle('active', index === currentIndex);
         });
         
-        // Efecto parallax en imágenes
+        // Actualizar clase active en slides
         slides.forEach((slide, index) => {
-          const img = slide.querySelector('img');
           if (index === currentIndex) {
-            img.style.transform = 'scale(1)';
+            slide.classList.add('active');
           } else {
-            img.style.transform = 'scale(1.1)';
+            slide.classList.remove('active');
           }
         });
       }
@@ -917,6 +1829,87 @@
           }
         }
       });
+
+      // Intersection Observer para animaciones de scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            
+            // Animar text-block si existe
+            const textBlock = entry.target.querySelector('.text-block');
+            if (textBlock) {
+              textBlock.classList.add('animate-in');
+            }
+            
+            // Animar CTA si existe
+            const cta = entry.target.querySelector('.cta');
+            if (cta) {
+              cta.classList.add('animate-in');
+            }
+          }
+        });
+      }, observerOptions);
+
+      // Observar todas las secciones
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+
+      // Observar el footer también
+      const footer = document.querySelector('footer');
+      if (footer) {
+        observer.observe(footer);
+      }
+
+      // Animar navbar al cargar
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        setTimeout(() => {
+          navbar.style.animation = 'slideDownNav 0.6s ease-out forwards';
+        }, 100);
+      }
+
+      // Control de iconos flotantes - aparecen después de hacer scroll
+      const floatingContact = document.querySelector('.floating-contact');
+      const heroCarousel = document.querySelector('.hero-carousel');
+      
+      function checkScrollForFloatingButtons() {
+        if (!floatingContact || !heroCarousel) return;
+        
+        const heroBottom = heroCarousel.offsetTop + heroCarousel.offsetHeight;
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Mostrar iconos solo después de haber pasado completamente el carrusel
+        // Agregamos un pequeño margen de 50px para que aparezcan un poco antes
+        if (scrollPosition > heroBottom - 50) {
+          floatingContact.classList.add('show');
+        } else {
+          floatingContact.classList.remove('show');
+        }
+      }
+      
+      // Verificar al cargar la página
+      checkScrollForFloatingButtons();
+      
+      // Verificar al hacer scroll
+      let scrollTimeout;
+      window.addEventListener('scroll', function() {
+        // Usar debounce para mejorar el rendimiento
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(checkScrollForFloatingButtons, 10);
+      }, { passive: true });
+      
+      // Verificar al redimensionar la ventana (por si cambia la altura del carrusel)
+      window.addEventListener('resize', function() {
+        checkScrollForFloatingButtons();
+      }, { passive: true });
     });
 
     // Funciones de contacto
@@ -1107,3 +2100,4 @@
 
 </body>
 </html>
+
