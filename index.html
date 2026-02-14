@@ -323,16 +323,16 @@
     <!-- Carrusel de imágenes -->
     <div class="carousel-container">
       <div class="carousel-track" id="carouselTrack" role="region" aria-label="Galería de imágenes de transporte">
-        <div class="carousel-slide">
+        <div class="carousel-slide" data-title="Transporte de Batea en V Región" data-description="Servicios profesionales de transporte de batea para áridos, materiales de construcción y carga a granel en V Región y todo Chile.">
           <img src="imgs/transporte-batea-v-region-valparaiso-concon.png" alt="Camión batea transportando áridos y materiales de construcción en V Región - Servicio de transporte de batea en Valparaíso ConCon Viña del Mar - Logística de transportes para carga pesada materiales a granel proyectos mineros industriales - Flocam Transportes" title="Transporte de batea V Región - Logística de transportes profesional" loading="eager" width="1920" height="1080">
         </div>
-        <div class="carousel-slide">
+        <div class="carousel-slide" data-title="Transporte de Cama Baja" data-description="Servicio especializado de transporte de cama baja para maquinaria pesada, equipos industriales y cargas sobredimensionadas.">
           <img src="imgs/transporte-cama-baja-maquinaria-pesada-equipos-industriales.png" alt="Cama baja transportando maquinaria pesada y equipos sobredimensionados en V Región - Servicio de transporte de cama baja para excavadoras grúas estructuras metálicas - Logística de camiones especializada con conductores certificados permisos especiales - Flocam Transportes Chile" title="Transporte de cama baja - Logística de camiones para equipos industriales" loading="lazy" width="1920" height="1080">
         </div>
-        <div class="carousel-slide">
+        <div class="carousel-slide" data-title="Logística de Transportes" data-description="Especialistas en logística de transportes y logística de camiones para proyectos mineros, industriales y de construcción.">
           <img src="imgs/transportes-profesionales-carga-pesada-v-region-chile.png" alt="Flota de camiones especializados en transporte de carga pesada V Región - Servicios de transportes profesionales transporte de batea transporte de cama baja en ConCon Valparaíso Santiago - Logística de transportes para proyectos mineros construcción industrial - Flocam Transportes" title="Transportes V Región - Transporte de batea y cama baja profesional" loading="lazy" width="1920" height="1080">
         </div>
-        <div class="carousel-slide">
+        <div class="carousel-slide" data-title="Logística de Camiones" data-description="Coordinación, planificación y seguimiento completo para cada transporte de batea o transporte de cama baja en V Región.">
           <img src="imgs/logistica-transportes-camiones-especializados-v-region.png" alt="Servicio completo de logística de transportes y logística de camiones en V Región - Coordinación planificación seguimiento transporte de batea transporte de cama baja - Gestión de permisos rutas especiales prevencionistas de riesgo - Flocam Transportes ConCon Valparaíso Chile" title="Logística de transportes y logística de camiones - Transporte V Región" loading="lazy" width="1920" height="1080">
         </div>
       </div>
@@ -352,11 +352,9 @@
     
     <!-- Contenido del header -->
     <div class="header-content">
-      <h1>Transporte de Batea y Transporte de Cama Baja en V Región | Logística de Transportes y Camiones</h1>
-      <p>
-        Servicios profesionales de <strong>transporte de batea</strong> y <strong>transporte de cama baja</strong> en V Región y todo Chile. 
-        Especialistas en <strong>logística de transportes</strong> y <strong>logística de camiones</strong> para carga pesada, 
-        maquinaria industrial y materiales a granel. <strong>Transportes</strong> confiables para proyectos mineros, industriales y de construcción.
+      <h1 id="carouselTitle">Transporte de Batea en V Región</h1>
+      <p id="carouselDescription">
+        Servicios profesionales de transporte de batea para áridos, materiales de construcción y carga a granel en V Región y todo Chile.
       </p>
     </div>
   </section>
@@ -540,7 +538,8 @@
         <div class="contact-card">
           <div class="contact-icon">📧</div>
           <h3>Email</h3>
-          <p>tsolucionesflocam@gmail.com</p>
+          <p>tsolucionesflocam <br>
+            @gmail.com</p>
           <button onclick="contactarEmail()" class="contact-btn">Enviar Email</button>
         </div>
         
@@ -606,6 +605,44 @@
       <button class="floating-btn location" onclick="verUbicacion()">
         <img src="icons/ubicacion.svg" alt="Ubicación" width="24" height="24">
       </button>
+    </div>
+  </div>
+
+  <!-- Sección de carretera con camión animado (fija en la parte inferior) -->
+  <div class="road-container" aria-hidden="true">
+    <div class="road">
+      <!-- Líneas de la carretera -->
+      <div class="road-lines">
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+      </div>
+      
+      <!-- Animación de camión -->
+      <div class="truck-animation" aria-hidden="true">
+        <!-- Focos delanteros -->
+        <div class="truck-headlights">
+          <div class="headlight-beam headlight-left"></div>
+          <div class="headlight-beam headlight-right"></div>
+        </div>
+        <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cuerpo del camión -->
+          <rect x="5" y="15" width="35" height="20" fill="#22c55e" rx="2"/>
+          <!-- Cabina -->
+          <rect x="40" y="20" width="15" height="15" fill="#16a34a" rx="2"/>
+          <!-- Ventana -->
+          <rect x="42" y="22" width="11" height="8" fill="#3b82f6" rx="1"/>
+          <!-- Ruedas -->
+          <circle cx="15" cy="35" r="5" fill="#1f2933"/>
+          <circle cx="15" cy="35" r="3" fill="#4b5563"/>
+          <circle cx="30" cy="35" r="5" fill="#1f2933"/>
+          <circle cx="30" cy="35" r="3" fill="#4b5563"/>
+          <circle cx="48" cy="35" r="5" fill="#1f2933"/>
+          <circle cx="48" cy="35" r="3" fill="#4b5563"/>
+        </svg>
+      </div>
     </div>
   </div>
 

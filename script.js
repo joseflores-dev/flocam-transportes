@@ -24,6 +24,27 @@ document.addEventListener('DOMContentLoaded', function() {
         slide.classList.remove('active');
       }
     });
+    
+    // Actualizar contenido del header según la slide activa
+    const activeSlide = slides[currentIndex];
+    const titleElement = document.getElementById('carouselTitle');
+    const descriptionElement = document.getElementById('carouselDescription');
+    
+    if (activeSlide && titleElement && descriptionElement) {
+      const title = activeSlide.getAttribute('data-title') || 'Transporte de Batea en V Región';
+      const description = activeSlide.getAttribute('data-description') || 'Servicios profesionales de transporte de batea para áridos, materiales de construcción y carga a granel en V Región y todo Chile.';
+      
+      // Animación de fade out/in
+      titleElement.style.opacity = '0';
+      descriptionElement.style.opacity = '0';
+      
+      setTimeout(() => {
+        titleElement.textContent = title;
+        descriptionElement.textContent = description;
+        titleElement.style.opacity = '1';
+        descriptionElement.style.opacity = '1';
+      }, 200);
+    }
   }
 
   window.nextSlide = function() {
