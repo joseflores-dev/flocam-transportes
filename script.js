@@ -355,8 +355,8 @@ function llamarTelefono() {
 }
 
 function verUbicacion() {
-  const ubicacion = 'Santiago, Chile';
-  const googleMapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(ubicacion)}`;
+  const ubicacion = 'ConCon, Valparaíso, Chile';
+  const googleMapsUrl = 'https://maps.google.com/?q=-32.9244851,-71.4752076';
   
   Swal.fire({
     title: '📍 Ver Ubicación',
