@@ -3136,13 +3136,91 @@ section.animate-in .benefit-card:nth-child(6) { transition-delay: 0.6s; }
   font-weight: 600;
 }
 
+/* Sección CTA */
+.cta-section {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 20px;
+  margin: 40px auto;
+  max-width: 1200px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-section h2 {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cta-section p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Botón CTA */
+.cta-button {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+  color: white;
+  padding: 18px 50px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 10px 30px rgba(249, 115, 22, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, #fb923c 0%, #fdba74 100%);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 20px 50px rgba(249, 115, 22, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cta-button:active {
+  transform: translateY(-1px) scale(1.01);
+}
+
 /* Footer simple */
 .footer-simple {
-  background: rgba(0, 31, 63, 0.5);
+  background: linear-gradient(135deg, rgba(0, 31, 63, 0.8) 0%, rgba(0, 20, 40, 0.8) 100%);
   backdrop-filter: blur(20px);
-  padding: 40px 20px;
+  padding: 60px 20px 40px;
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+   opacity: 1 !important;
+}
+
+.footer-simple::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #f97316 50%, transparent 100%);
+ 
 }
 
 .footer-content {
@@ -3150,34 +3228,85 @@ section.animate-in .benefit-card:nth-child(6) { transition-delay: 0.6s; }
   margin: 0 auto;
 }
 
+.footer-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.footer-section h3 {
+  color: #f97316;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-section p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.footer-section li::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: #f97316;
+  font-size: 0.8rem;
+}
+
 .footer-links {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   flex-wrap: wrap;
 }
 
 .footer-links a {
   color: white;
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 12px 25px;
   border-radius: 25px;
   background: rgba(249, 115, 22, 0.2);
   border: 1px solid rgba(249, 115, 22, 0.3);
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
 }
 
 .footer-links a:hover {
   background: rgba(249, 115, 22, 0.4);
   transform: translateY(-2px);
   text-decoration: none;
+  box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
 }
 
 .footer-simple p {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
   margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Responsive para página cama baja */
@@ -3215,6 +3344,19 @@ section.animate-in .benefit-card:nth-child(6) { transition-delay: 0.6s; }
     font-size: 0.9rem;
   }
   
+  .cta-section {
+    padding: 60px 20px;
+    margin: 20px auto;
+  }
+  
+  .cta-section h2 {
+    font-size: 2rem;
+  }
+  
+  .cta-section p {
+    font-size: 1.1rem;
+  }
+  
   .cotizacion-form {
     padding: 30px 20px;
   }
@@ -3231,13 +3373,20 @@ section.animate-in .benefit-card:nth-child(6) { transition-delay: 0.6s; }
     font-size: 0.95rem;
   }
   
-  .submit-btn {
+  .submit-btn,
+  .cta-button {
     padding: 15px 40px;
     font-size: 1rem;
   }
   
   .coverage-text li {
     font-size: 0.9rem;
+  }
+  
+  .footer-info {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
   }
   
   .footer-links {
@@ -3251,6 +3400,18 @@ section.animate-in .benefit-card:nth-child(6) { transition-delay: 0.6s; }
 }
 
 @media (max-width: 480px) {
+  .cta-section {
+    padding: 40px 15px;
+  }
+  
+  .cta-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .cta-section p {
+    font-size: 1rem;
+  }
+  
   .cotizacion-form {
     padding: 25px 15px;
   }
@@ -3262,7 +3423,8 @@ section.animate-in .benefit-card:nth-child(6) { transition-delay: 0.6s; }
     font-size: 0.9rem;
   }
   
-  .submit-btn {
+  .submit-btn,
+  .cta-button {
     padding: 14px 30px;
     font-size: 0.95rem;
   }
@@ -3273,6 +3435,18 @@ section.animate-in .benefit-card:nth-child(6) { transition-delay: 0.6s; }
   
   .map-placeholder {
     padding: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .footer-info {
+    gap: 25px;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.1rem;
+  }
+  
+  .footer-section p {
     font-size: 0.9rem;
   }
   

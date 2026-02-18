@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Permitir indexación completa del sitio
+Allow: /batea-traslados/
+Allow: /cama-baja-traslados/
+Allow: /logistica-camiones/
+Allow: /imgs/
+Allow: /icons/
+
+# Bloquear archivos innecesarios
+Disallow: /script.js
+Disallow: /*.css$
+
+# Sitemap
+Sitemap: https://flocamtransportes.cl/sitemap.xml
+
+# Configuración específica para motores de búsqueda principales
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Frecuencia de rastreo recomendada
+Crawl-delay: 1
