@@ -23,7 +23,8 @@ Sitio 100% estático, sin frameworks ni build tools:
 - **JavaScript vanilla** — interactividad (carrusel de imágenes, menú, formularios) en `script.js`, sin dependencias de bundlers.
 - **[SweetAlert2](https://sweetalert2.github.io/)** (vía CDN `cdn.jsdelivr.net`) — alertas y modales.
 - **Google Fonts** — tipografía Montserrat, cargada de forma asíncrona.
-- **GitHub Pages** — hosting, con dominio personalizado configurado en `CNAME`.
+- **GitHub Pages** — hosting del sitio, con dominio personalizado configurado en `CNAME`.
+- **Cloudflare** — DNS, CDN, SSL y protección delante del dominio (proxy sobre GitHub Pages).
 
 No requiere `package.json`, gestor de paquetes ni proceso de compilación: los archivos se sirven tal cual.
 
@@ -61,7 +62,7 @@ Luego abrir `http://localhost:8000` en el navegador.
 
 ## Despliegue
 
-El sitio se publica automáticamente vía **GitHub Pages** al hacer push a la rama `main`. El archivo `CNAME` mantiene el dominio personalizado `flocamtransportes.cl`.
+El sitio se publica automáticamente vía **GitHub Pages** al hacer push a la rama `main`. El archivo `CNAME` mantiene el dominio personalizado `flocamtransportes.cl`, cuyo DNS y CDN se gestionan a través de **Cloudflare** (proxy, SSL y caché delante de GitHub Pages).
 
 ## Contacto
 
